@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+
+.bgImg-login {
+    background-image: url(./img/istockphoto-1483863447-2048x2048\ 2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+

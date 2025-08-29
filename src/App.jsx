@@ -1,7 +1,13 @@
 import React from "react";
+import { Outlet } from "react-router";
+import Navbar from "./components/utils/Navbar";
 
 const App = () => {
-  return <div className="text-violet-800">App</div>;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
 export default App;
