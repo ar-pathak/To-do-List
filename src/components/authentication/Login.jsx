@@ -5,7 +5,6 @@ import {
   FaTwitterSquare,
   FaUser,
 } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
 
 const Login = () => {
   const onLogin = (e) => {
@@ -14,7 +13,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" flex items-center justify-center min-h-screen bg-[#FF6767] bgImg-login md:p-24 sm:p-10 p-5">
+    <div className=" flex items-center justify-center min-h-screen bg-[#FF6767] bgImg-auth md:p-24 sm:p-10 p-5">
       <div className="flex items-center justify-center flex-wrap bg-amber-50 w-full">
         <div className="xl:w-1/2 w-full flex flex-col items-center justify-center my-5">
           <div className="w-full md:px-25 px-10 lg:pt-20 md:pt-15 pt-5">
@@ -38,7 +37,7 @@ const Login = () => {
                   htmlFor="userName"
                   className="flex sm:h-15 h-10 border border-[#565454] rounded-2xl items-center p-3"
                 >
-                  <IoMdLock />
+                  <IoMdLock className="h-6 w-6" />
                   <input
                     className="outline-none mx-3"
                     type="text"
