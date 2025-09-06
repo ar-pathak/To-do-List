@@ -123,7 +123,7 @@ const Signup = () => {
             <div className="flex flex-wrap items-center my-3">
               <p className="mr-2">Already have an account?</p>
               <a href="#" className="text-blue-400 font-bold ">
-                Create one
+                Log In
               </a>
             </div>
           </div>

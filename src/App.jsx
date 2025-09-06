@@ -1,11 +1,22 @@
 import React from "react";
 import { Outlet } from "react-router";
-import Navbar from "./components/utils/Navbar";
+import SideNavbar from "./components/nav/SideNavbar";
+import Navbar from "./components/nav/Navbar";
 
 const App = () => {
   return (
     <>
-      <Outlet />
+      {/* navbar */}
+      <Navbar />
+      <div>
+        {/* sideNavbar */}
+        <div>
+          <SideNavbar />
+        </div>
+      </div>
+      <div>
+        <Outlet />
+      </div>
     </>
   );
 };
