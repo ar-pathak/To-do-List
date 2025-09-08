@@ -1,9 +1,60 @@
-import React from 'react'
+import { BiTask } from "react-icons/bi";
+import { MdDashboard, MdLogout } from "react-icons/md";
+import { BsExclamationLg, BsListTask } from "react-icons/bs";
+import { IoMdSettings, IoIosHelpCircleOutline } from "react-icons/io";
+
+const navItems = [
+  { name: "Dashboard", icon: <MdDashboard />, active: true },
+  { name: "Vital Task", icon: <BsExclamationLg /> },
+  { name: "My Task", icon: <BiTask /> },
+  { name: "Task Categories", icon: <BsListTask /> },
+  { name: "Settings", icon: <IoMdSettings /> },
+  { name: "Help", icon: <IoIosHelpCircleOutline /> },
+];
 
 const SideNavbar = () => {
   return (
-    <div>SideNavbar</div>
-  )
-}
+    <div className="w-64 bg-[#FF6767] text-white h-full flex flex-col justify-between p-5 rounded-r-2xl shadow-lg">
+      {/* Profile Section */}
+      <div className="flex flex-col items-center mb-6">
+        <img
+          src="./img/Ellipse 1.png"
+          alt="Profile"
+          className="w-20 h-20 rounded-full border-2 border-white shadow-md"
+        />
+        <p className="mt-2 font-semibold">Sundar Gurung</p>
+        <p className="text-sm text-gray-100">sundargurung360@gmail.com</p>
+        <div className="w-full h-px bg-white/30 mt-4"></div>
+      </div>
 
-export default SideNavbar
+      {/* Nav Items */}
+      <nav className="flex-1">
+        <ul className="space-y-2">
+          {navItems.map((item, idx) => (
+            <li key={idx}>
+              <a
+                href="#"
+                className={`flex items-center gap-3 p-3 rounded-lg transition font-medium ${
+                  item.active
+                    ? "bg-white text-[#FF6767]"
+                    : "hover:bg-white/20"
+                }`}
+              >
+                <span className="text-xl">{item.icon}</span>
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Logout */}
+      <div className="flex items-center gap-2 mt-6 cursor-pointer hover:opacity-80">
+        <MdLogout className="text-xl" />
+        <button className="font-medium">Logout</button>
+      </div>
+    </div>
+  );
+};
+
+export default SideNavbar;

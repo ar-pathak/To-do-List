@@ -1,23 +1,23 @@
-import React from "react";
 import { Outlet } from "react-router";
 import SideNavbar from "./components/nav/SideNavbar";
 import Navbar from "./components/nav/Navbar";
 
 const App = () => {
   return (
-    <>
-      {/* navbar */}
+    <div className="h-screen bg-gray-100 flex flex-col">
+      {/* Top Navbar */}
       <Navbar />
-      <div>
-        {/* sideNavbar */}
-        <div>
-          <SideNavbar />
+
+      <div className="flex flex-1">
+        {/* Side Navbar */}
+        <SideNavbar />
+
+        {/* Main Content */}
+        <div className="flex-1 p-6 overflow-y-auto">
+          <Outlet />
         </div>
       </div>
-      <div>
-        <Outlet />
-      </div>
-    </>
+    </div>
   );
 };
 
