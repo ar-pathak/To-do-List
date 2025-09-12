@@ -2,6 +2,7 @@ import { BiTask } from "react-icons/bi";
 import { MdDashboard, MdLogout } from "react-icons/md";
 import { BsExclamationLg, BsListTask } from "react-icons/bs";
 import { IoMdSettings, IoIosHelpCircleOutline } from "react-icons/io";
+import { SiVexxhost } from "react-icons/si";
 
 const navItems = [
   { name: "Dashboard", icon: <MdDashboard />, active: true },
@@ -12,11 +13,23 @@ const navItems = [
   { name: "Help", icon: <IoIosHelpCircleOutline /> },
 ];
 
-const SideNavbar = () => {
+const SideNavbar = ({ isOpen, setIsOpen }) => {
   return (
-    <div className="w-64 bg-[#FF6767] text-white h-full flex flex-col justify-between p-5 rounded-r-2xl shadow-lg">
+    <div
+      className={` ${
+        isOpen ? "w-full" : "w-64"
+      }   w-64 bg-[#FF6767] text-white h-full flex flex-col justify-between p-5 rounded-r-2xl shadow-lg transition `}
+    >
       {/* Profile Section */}
       <div className="flex flex-col items-center mb-6">
+        {isOpen ? (
+          <SiVexxhost
+            className="absolute z-50 right-5 top-5"
+            onClick={() => setIsOpen(!isOpen)}
+          />
+        ) : (
+          ""
+        )}
         <img
           src="./img/Ellipse 1.png"
           alt="Profile"
@@ -35,9 +48,7 @@ const SideNavbar = () => {
               <a
                 href="#"
                 className={`flex items-center gap-3 p-3 rounded-lg transition font-medium ${
-                  item.active
-                    ? "bg-white text-[#FF6767]"
-                    : "hover:bg-white/20"
+                  item.active ? "bg-white text-[#FF6767]" : "hover:bg-white/20"
                 }`}
               >
                 <span className="text-xl">{item.icon}</span>

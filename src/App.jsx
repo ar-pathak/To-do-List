@@ -10,7 +10,9 @@ const App = () => {
 
       <div className="flex flex-1">
         {/* Side Navbar */}
-        <SideNavbar />
+        <div className="hidden md:block ">
+          <SideNavbar />
+        </div>
 
         {/* Main Content */}
         <div className="flex-1 p-6 overflow-y-auto">
