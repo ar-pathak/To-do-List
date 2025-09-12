@@ -80,8 +80,9 @@ const Navbar = () => {
       </div>
       {/* hamburger nav menu */}
       <div
-        className={`transition-all duration-500 ease-in-out overflow-auto md:hidden absolute z-50 w-full scroll-auto  
-         ${isOpen ? "max-h-full opacity-100 flex" : "max-h-0 opacity-0"} `}
+        className={`transition-all duration-500 ease-in-out md:hidden absolute z-50 w-full 
+    ${isOpen ? "max-h-screen opacity-100 flex" : "max-h-0 opacity-0"} 
+  `}
       >
         <SideNavbar isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>

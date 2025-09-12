@@ -17,7 +17,7 @@ const SideNavbar = ({ isOpen, setIsOpen }) => {
   return (
     <div
       className={` ${
-        isOpen ? "w-full" : "w-64"
+        isOpen ? "w-full h-screen" : "w-64"
       }   w-64 bg-[#FF6767] text-white h-full flex flex-col justify-between p-5 rounded-r-2xl shadow-lg transition `}
     >
       {/* Profile Section */}
@@ -41,7 +41,7 @@ const SideNavbar = ({ isOpen, setIsOpen }) => {
       </div>
 
       {/* Nav Items */}
-      <nav className="flex-1">
+      <nav className="flex-1 overflow-y-auto">
         <ul className="space-y-2">
           {navItems.map((item, idx) => (
             <li key={idx}>
@@ -60,7 +60,7 @@ const SideNavbar = ({ isOpen, setIsOpen }) => {
       </nav>
 
       {/* Logout */}
-      <div className="flex items-center gap-2 mt-6 cursor-pointer hover:opacity-80">
+      <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 pt-4 border-t border-white/30">
         <MdLogout className="text-xl" />
         <button className="font-medium">Logout</button>
       </div>
