@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import Login from "./components/authentication/Login";
 import Signup from "./components/authentication/Signup";
-import Hero from "./components/pages/Hero";
+const Dashboard = lazy(() => import("./components/pages/Dashboard"));
 
 const router = createBrowserRouter([
   {
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: (
-          <Suspense>
-            <Hero />
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Dashboard />
           </Suspense>
         ),
       },
