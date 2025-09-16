@@ -3,6 +3,15 @@ import { IoIosAdd } from "react-icons/io";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
 import ToDoStatusCard from "../utils/ToDoStatusCard";
 import { VscStarFull } from "react-icons/vsc";
+import StatusChart from "../utils/StatusChart";
+import { MdOutlineTask, MdOutlineTaskAlt } from "react-icons/md";
+
+const status = [
+  { status: "Completed", percentage: 84 },
+  { status: "In Progress", percentage: 10 },
+  { status: "Not Started", percentage: 6 }
+]
+
 const Dashboard = () => {
   return (
     <div className="m-5 mx-10">
@@ -44,10 +53,22 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/2">
-          <div>
+        <div className="w-1/2 p-5 ml-5">
+          <div className="shadow-lg rounded-lg ">
+            <div className="flex items-center mb-5"><MdOutlineTaskAlt className="text-[#FF6767]" /> <span className="text-[#A1A3AB] mx-2">Task Status</span></div>
+            <div className="flex justify-between items-center mb-5">
+              {status.map((item, idx) => (
+                <StatusChart key={idx} status={item} />
+              ))}
+            </div>
           </div>
-
+          <div className="shadow-md rounded-lg mt-10">
+            <div className="flex items-center"><MdOutlineTask className="text-[#FF6767]" /> <span className="text-[#A1A3AB] mx-2">Completed Task</span></div>
+            <div className="p-5">
+              <ToDoStatusCard />
+              <ToDoStatusCard />
+            </div>
+          </div>
         </div>
       </div>
     </div>
