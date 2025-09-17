@@ -18,7 +18,7 @@ export default function StatusChart({ status }) {
     ];
 
     return (
-        <div className="flex flex-col items-center justify-center relative mb-5">
+        <div className="sm:flex flex-col items-center hidden justify-center relative mb-5">
             <PieChart width={150} height={150}>
                 <Pie
                     data={data}
@@ -48,4 +48,34 @@ export default function StatusChart({ status }) {
             </p>
         </div>
     );
+}
+export function StatusChartForSM() {
+
+    const data = [
+        { name: "Completed", value: 84 },
+        { name: "In Progress", value: 46 },
+        { name: "Not Started", value: 13 },
+    ];
+
+    const COLORS = ["#00C49F", "#0088FE", "#FF4C4C"];
+
+
+    return (
+        <PieChart width={300} height={200}>
+            <Pie
+                data={data}
+                cx={150}
+                cy={100}
+                innerRadius={60}
+                outerRadius={80}
+                dataKey="value"
+            >
+                {data.map((entry, index) => (
+                    <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                ))}
+            </Pie>
+        </PieChart>
+    );
+
+
 }

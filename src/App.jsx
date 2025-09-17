@@ -8,9 +8,9 @@ const App = () => {
       {/* Top Navbar */}
       <Navbar />
 
-      <div className="flex flex-1">
+      <div className="flex flex-1 h-full mt-22">
         {/* Side Navbar */}
-        <div className="hidden md:block ">
+        <div className="hidden lg:block ">
           <SideNavbar />
         </div>
 

@@ -1,18 +1,38 @@
 import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
 import { FaCalendarAlt } from "react-icons/fa";
 import Search from "../utils/Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SideNavbar from "./SideNavbar";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        // Scroll Down → hide
+        setShow(false);
+      } else {
+        // Scroll Up → show
+        setShow(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
 
   return (
     <div
-      className={`flex flex-col ${
-        isOpen ? "p-0" : "p-4"
-      } bg-white shadow-lg rounded-2xl border border-gray-200 max-w-7xl mx-auto w-full transition-all duration-300`}
+      className={`flex flex-col ${isOpen ? "p-0" : "p-4"
+        } bg-white shadow-lg rounded-2xl border border-gray-200 max-w-7xl mx-auto w-full transition-all duration-300 fixed top-0 left-0 right-0 z-50 bg-white shadow transition-transform duration-300 ${show ? "translate-y-0" : "-translate-y-full"
+        }`}
     >
       {/* Top Bar */}
       <div className="flex justify-between items-center w-full">
@@ -32,9 +52,8 @@ const Navbar = () => {
           <IoIosSearch
             role="button"
             aria-label="Search"
-            className={`bg-[#FF6767] lg:hidden ${
-              isSearchOpen ? "hidden" : ""
-            } text-white w-7 h-7 sm:w-8 sm:h-8 p-1.5 rounded-md transition transform hover:scale-110 hover:bg-[#ff4c4c] cursor-pointer`}
+            className={`bg-[#FF6767] lg:hidden ${isSearchOpen ? "hidden" : ""
+              } text-white w-7 h-7 sm:w-8 sm:h-8 p-1.5 rounded-md transition transform hover:scale-110 hover:bg-[#ff4c4c] cursor-pointer`}
             onClick={() => setIsSearchOpen(!isSearchOpen)}
           />
 
@@ -70,11 +89,10 @@ const Navbar = () => {
 
       {/* Mobile Search (Animated) */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
-          isSearchOpen
-            ? "max-h-40 opacity-100 mt-3"
-            : "max-h-0 opacity-0 overflow-hidden"
-        }`}
+        className={`md:hidden transition-all duration-300 ease-in-out ${isSearchOpen
+          ? "max-h-40 opacity-100 mt-3"
+          : "max-h-0 opacity-0 overflow-hidden"
+          }`}
       >
         <Search />
       </div>

@@ -3,7 +3,7 @@ import { IoIosAdd } from "react-icons/io";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
 import ToDoStatusCard from "../utils/ToDoStatusCard";
 import { VscStarFull } from "react-icons/vsc";
-import StatusChart from "../utils/StatusChart";
+import StatusChart, { StatusChartForSM } from "../utils/StatusChart";
 import { MdOutlineTask, MdOutlineTaskAlt } from "react-icons/md";
 
 const status = [
@@ -15,7 +15,7 @@ const status = [
 const Dashboard = () => {
   return (
     <div className="m-5 mx-10">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-wrap justify-between items-center">
         <p className="text-4xl font-medium">Welcome back, Sundar 👋</p>
         <div className="flex items-center gap-5 text-[#FF6767]">
           <div className="flex items-center gap-1 bg-gray-100 p-2 rounded-lg">
@@ -31,8 +31,8 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div className="flex justify-between border border-gray-300 p-10 rounded-lg mt-5">
-        <div className="w-1/2 shadow-md rounded-lg p-5">
+      <div className="flex flex-wrap-reverse justify-between border border-gray-300 md:p-10 rounded-lg mt-5">
+        <div className=" shadow-md rounded-lg p-5 mx-5">
           <div className="flex justify-between items-center mb-5 ">
             <div className="flex items-center gap-2 text-[#FF6767] font-medium">
               <HiOutlineDocumentAdd className="text-[#A1A3AB]" />
@@ -46,27 +46,63 @@ const Dashboard = () => {
           <div>
             <p className="flex items-center" > <span className="text-[15px] font-medium mb-2">20 June</span> <span className="text-[#A1A3AB] text-[12px] mb-1 flex items-center mx-2"><VscStarFull className="mb-1" /> Today</span></p>
             <div className="p-2 ">
-              <ToDoStatusCard />
-              <ToDoStatusCard />
+              <ToDoStatusCard
+                title="Attend Nischal’s Birthday Party"
+                description="Buy gifts on the way and pick up cake from the bakery. (6 PM | Fresh Elements)"
+                priority="Moderate"
+                status="Not Started"
+                image="./img/Rectangle 10.png"
+              />
+
+              <ToDoStatusCard
+                title="Attend Nischal’s Birthday Party"
+                description="Buy gifts on the way and pick up cake from the bakery. (6 PM | Fresh Elements)"
+                priority="Moderate"
+                status="Not Started"
+                image="./img/Rectangle 10.png"
+              />
+
               <hr className="text-gray-300 my-5" />
-              <ToDoStatusCard />
+              <ToDoStatusCard
+                title="Attend Nischal’s Birthday Party"
+                description="Buy gifts on the way and pick up cake from the bakery. (6 PM | Fresh Elements)"
+                priority="Moderate"
+                status="Not Started"
+                image="./img/Rectangle 10.png"
+              />
+
             </div>
           </div>
         </div>
-        <div className="w-1/2 p-5 ml-5">
+        <div className="shadow-md rounded-lg p-5 mx-5">
           <div className="shadow-lg rounded-lg ">
             <div className="flex items-center mb-5"><MdOutlineTaskAlt className="text-[#FF6767]" /> <span className="text-[#A1A3AB] mx-2">Task Status</span></div>
-            <div className="flex justify-between items-center mb-5">
+            <div className="sm:flex hidden justify-between items-center mb-5">
               {status.map((item, idx) => (
                 <StatusChart key={idx} status={item} />
               ))}
+            </div>
+            <div className="sm:hidden flex justify-between items-center mb-5">
+              <StatusChartForSM />
             </div>
           </div>
           <div className="shadow-md rounded-lg mt-10">
             <div className="flex items-center"><MdOutlineTask className="text-[#FF6767]" /> <span className="text-[#A1A3AB] mx-2">Completed Task</span></div>
             <div className="p-5">
-              <ToDoStatusCard />
-              <ToDoStatusCard />
+              <ToDoStatusCard
+                title="Attend Nischal’s Birthday Party"
+                description="Buy gifts on the way and pick up cake from the bakery. (6 PM | Fresh Elements)"
+                priority="Moderate"
+                status="Not Started"
+                image="./img/Rectangle 10.png"
+              />
+              <ToDoStatusCard
+                title="Attend Nischal’s Birthday Party"
+                description="Buy gifts on the way and pick up cake from the bakery. (6 PM | Fresh Elements)"
+                priority="Moderate"
+                status="Not Started"
+                image="./img/Rectangle 10.png"
+              />
             </div>
           </div>
         </div>

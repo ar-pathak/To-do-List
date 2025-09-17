@@ -1,0 +1,88 @@
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
+
+const statusColors: Record<string, string> = {
+  "Not Started": "text-red-500",
+  "In Progress": "text-yellow-500",
+  "Completed": "text-green-500",
+};
+
+const priorityColors: Record<string, string> = {
+  High: "text-red-500",
+  Moderate: "text-blue-400",
+  Low: "text-green-500",
+};
+
+const ToDoStatusCard = ({ 
+  title, 
+  description, 
+  priority, 
+  status, 
+  image 
+}: {
+  title: string;
+  description: string;
+  priority: "High" | "Moderate" | "Low";
+  status: "Not Started" | "In Progress" | "Completed";
+  image?: string;
+}) => {
+  return (
+    <div className="flex justify-between border border-gray-300 p-4 rounded-lg mb-3 shadow-sm hover:shadow-md transition">
+      {/* Status Dot */}
+      <div
+        className={`w-[15px] h-[15px] rounded-full inline-block mr-2 mt-2 ${
+          status === "Completed"
+            ? "bg-green-500"
+            : status === "In Progress"
+            ? "bg-yellow-500"
+            : "bg-red-500"
+        }`}
+      ></div>
+
+      {/* Content */}
+      <div className="flex flex-col md:flex-row gap-5 w-full mx-2">
+        <div className="md:w-4/5 pr-2">
+          <h2 className="text-lg md:text-xl font-medium">{title}</h2>
+          <p className="text-gray-500 line-clamp-2">{description}</p>
+
+          {/* Priority & Status */}
+          <div className="flex flex-wrap gap-5 mt-3 text-sm">
+            <div className="flex items-center">
+              <h3 className="font-medium">Priority:</h3>
+              <span className={`ml-2 ${priorityColors[priority]}`}>
+                {priority}
+              </span>
+            </div>
+            <div className="flex items-center">
+              <h3 className="font-medium">Status:</h3>
+              <span className={`ml-2 ${statusColors[status]}`}>
+                {status}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Image */}
+        {image && (
+          <div className="h-full flex items-center justify-center">
+            <img
+              src={image}
+              alt="task"
+              className="w-20 h-20 md:w-28 md:h-28 object-cover rounded-lg"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Menu */}
+      <button
+        className="mx-2 text-gray-500 hover:text-black"
+        title="More options"
+        aria-label="More options"
+      >
+        <HiOutlineDotsHorizontal size={20} />
+      </button>
+    </div>
+  );
+};
+
+export default ToDoStatusCard;
