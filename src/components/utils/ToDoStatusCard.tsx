@@ -12,12 +12,12 @@ const priorityColors: Record<string, string> = {
   Low: "text-green-500",
 };
 
-const ToDoStatusCard = ({ 
-  title, 
-  description, 
-  priority, 
-  status, 
-  image 
+const ToDoStatusCard = ({
+  title,
+  description,
+  priority,
+  status,
+  image
 }: {
   title: string;
   description: string;
@@ -29,13 +29,12 @@ const ToDoStatusCard = ({
     <div className="flex justify-between border border-gray-300 p-4 rounded-lg mb-3 shadow-sm hover:shadow-md transition">
       {/* Status Dot */}
       <div
-        className={`w-[15px] h-[15px] rounded-full inline-block mr-2 mt-2 ${
-          status === "Completed"
-            ? "bg-green-500"
-            : status === "In Progress"
+        className={`w-[12px] h-[12px] rounded-full inline-block mr-2 mt-2 ${status === "Completed"
+          ? "bg-green-500"
+          : status === "In Progress"
             ? "bg-yellow-500"
             : "bg-red-500"
-        }`}
+          }`}
       ></div>
 
       {/* Content */}
@@ -45,8 +44,8 @@ const ToDoStatusCard = ({
           <p className="text-gray-500 line-clamp-2">{description}</p>
 
           {/* Priority & Status */}
-          <div className="flex flex-wrap gap-5 mt-3 text-sm">
-            <div className="flex items-center">
+          <div className="flex flex-wrap  mt-3  text-sm">
+            <div className="flex items-center mr-4">
               <h3 className="font-medium">Priority:</h3>
               <span className={`ml-2 ${priorityColors[priority]}`}>
                 {priority}
@@ -63,7 +62,7 @@ const ToDoStatusCard = ({
 
         {/* Image */}
         {image && (
-          <div className="h-full flex items-center justify-center">
+          <div className="h-full md:flex hidden items-center justify-center">
             <img
               src={image}
               alt="task"
@@ -75,7 +74,7 @@ const ToDoStatusCard = ({
 
       {/* Menu */}
       <button
-        className="mx-2 text-gray-500 hover:text-black"
+        className="mx-2 relative bottom-10 text-gray-500 hover:text-black"
         title="More options"
         aria-label="More options"
       >

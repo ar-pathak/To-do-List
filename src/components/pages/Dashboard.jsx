@@ -3,7 +3,7 @@ import { IoIosAdd } from "react-icons/io";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
 import ToDoStatusCard from "../utils/ToDoStatusCard";
 import { VscStarFull } from "react-icons/vsc";
-import StatusChart, { StatusChartForSM } from "../utils/StatusChart";
+import StatusChart from "../utils/StatusChart";
 import { MdOutlineTask, MdOutlineTaskAlt } from "react-icons/md";
 
 const status = [
@@ -14,11 +14,11 @@ const status = [
 
 const Dashboard = () => {
   return (
-    <div className="m-5 mx-10">
+    <div className="sm:m-5  md:mx-10 ">
       <div className="flex flex-wrap justify-between items-center">
-        <p className="text-4xl font-medium">Welcome back, Sundar 👋</p>
+        <p className="text-4xl m-2 sm:m-0 font-medium">Welcome back, Sundar 👋</p>
         <div className="flex items-center gap-5 text-[#FF6767]">
-          <div className="flex items-center gap-1 bg-gray-100 p-2 rounded-lg">
+          <div className="lg:flex hidden items-center gap-1 bg-gray-100 p-2 rounded-lg">
             <img src="./img/SearchICon.png" alt="link" />
             <img src="./img/SearchICon.png" alt="link" />
             <img src="./img/SearchICon.png" alt="link" />
@@ -32,8 +32,8 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="flex flex-wrap-reverse justify-between border border-gray-300 md:p-10 rounded-lg mt-5">
-        <div className=" shadow-md rounded-lg p-5 mx-5">
-          <div className="flex justify-between items-center mb-5 ">
+        <div className=" shadow-md rounded-lg sm:p-5 sm:mx-5">
+          <div className="flex justify-between items-center mb-5 px-2 ">
             <div className="flex items-center gap-2 text-[#FF6767] font-medium">
               <HiOutlineDocumentAdd className="text-[#A1A3AB]" />
               <span>To-Do</span>
@@ -44,7 +44,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div>
-            <p className="flex items-center" > <span className="text-[15px] font-medium mb-2">20 June</span> <span className="text-[#A1A3AB] text-[12px] mb-1 flex items-center mx-2"><VscStarFull className="mb-1" /> Today</span></p>
+            <p className="flex items-center px-2" > <span className="text-[15px] font-medium mb-2">20 June</span> <span className="text-[#A1A3AB] text-[12px] mb-1 flex items-center mx-2"><VscStarFull className="mb-1" /> Today</span></p>
             <div className="p-2 ">
               <ToDoStatusCard
                 title="Attend Nischal’s Birthday Party"
@@ -74,21 +74,27 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="shadow-md rounded-lg p-5 mx-5">
+        <div className="shadow-md rounded-lg mb-5 sm:p-5 py-5 sm:mx-5">
           <div className="shadow-lg rounded-lg ">
-            <div className="flex items-center mb-5"><MdOutlineTaskAlt className="text-[#FF6767]" /> <span className="text-[#A1A3AB] mx-2">Task Status</span></div>
-            <div className="sm:flex hidden justify-between items-center mb-5">
+            <div className="flex items-center mb-5 px-2"><MdOutlineTaskAlt className="text-[#FF6767]" /> <span className="text-[#A1A3AB] mx-2">Task Status</span></div>
+            <div className="sm:flex hidden justify-between items-center pb-5 mb-5">
               {status.map((item, idx) => (
-                <StatusChart key={idx} status={item} />
+                <StatusChart key={idx} type="single" data={item} />
               ))}
             </div>
-            <div className="sm:hidden flex justify-between items-center mb-5">
-              <StatusChartForSM />
+            <div className="sm:hidden flex justify-center items-center pb-5 mb-5">
+              <StatusChart
+                type="multi"
+                data={[
+                  { name: "Completed", value: 84 },
+                  { name: "In Progress", value: 10 },
+                  { name: "Not Started", value: 6 },
+                ]} />
             </div>
           </div>
           <div className="shadow-md rounded-lg mt-10">
-            <div className="flex items-center"><MdOutlineTask className="text-[#FF6767]" /> <span className="text-[#A1A3AB] mx-2">Completed Task</span></div>
-            <div className="p-5">
+            <div className="flex items-center px-2"><MdOutlineTask className="text-[#FF6767]" /> <span className="text-[#A1A3AB] mx-2">Completed Task</span></div>
+            <div className="sm:p-5">
               <ToDoStatusCard
                 title="Attend Nischal’s Birthday Party"
                 description="Buy gifts on the way and pick up cake from the bakery. (6 PM | Fresh Elements)"
