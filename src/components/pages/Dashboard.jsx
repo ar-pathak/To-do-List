@@ -14,7 +14,7 @@ const status = [
 
 const Dashboard = () => {
   return (
-    <div className="sm:m-5  md:mx-10 ">
+    <div className="sm:m-5 md:mx-10 ">
       <div className="flex flex-wrap justify-between items-center">
         <p className="text-4xl m-2 sm:m-0 font-medium">Welcome back, Sundar 👋</p>
         <div className="flex items-center gap-5 text-[#FF6767]">

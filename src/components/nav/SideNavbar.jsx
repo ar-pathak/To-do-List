@@ -16,9 +16,8 @@ const navItems = [
 const SideNavbar = ({ isOpen, setIsOpen }) => {
   return (
     <div
-      className={` ${
-        isOpen ? "w-full h-screen" : "w-64"
-      }   w-64 bg-[#FF6767] text-white h-full flex flex-col justify-between p-5 rounded-r-2xl shadow-lg transition `}
+      className={` ${isOpen ? "w-full h-screen" : "w-64"
+        }   w-64 bg-[#FF6767] text-white h-full flex flex-col justify-between p-5 rounded-r-2xl shadow-lg transition `}
     >
       {/* Profile Section */}
       <div className="flex flex-col items-center mb-6">
@@ -47,9 +46,8 @@ const SideNavbar = ({ isOpen, setIsOpen }) => {
             <li key={idx}>
               <a
                 href="#"
-                className={`flex items-center gap-3 p-3 rounded-lg transition font-medium ${
-                  item.active ? "bg-white text-[#FF6767]" : "hover:bg-white/20"
-                }`}
+                className={`flex items-center gap-3 p-3 rounded-lg transition font-medium ${item.active ? "bg-white text-[#FF6767]" : "hover:bg-white/20"
+                  }`}
               >
                 <span className="text-xl">{item.icon}</span>
                 {item.name}
