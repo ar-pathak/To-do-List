@@ -13,7 +13,7 @@ const router = createBrowserRouter([
         <App />
       </Suspense>
     ),
-    errorElement: <h1>Error</h1>,
+    errorElement: <h1>Page Not Found</h1>,
     children: [
       {
         path: "/",

@@ -3,14 +3,15 @@ import { MdDashboard, MdLogout } from "react-icons/md";
 import { BsExclamationLg, BsListTask } from "react-icons/bs";
 import { IoMdSettings, IoIosHelpCircleOutline } from "react-icons/io";
 import { SiVexxhost } from "react-icons/si";
+import { NavLink } from "react-router";
 
 const navItems = [
-  { name: "Dashboard", icon: <MdDashboard />, active: true },
-  { name: "Vital Task", icon: <BsExclamationLg /> },
-  { name: "My Task", icon: <BiTask /> },
-  { name: "Task Categories", icon: <BsListTask /> },
-  { name: "Settings", icon: <IoMdSettings /> },
-  { name: "Help", icon: <IoIosHelpCircleOutline /> },
+  { name: "Dashboard", link: "/", icon: <MdDashboard />, active: true },
+  { name: "Vital Task", link: "/vital-task", icon: <BsExclamationLg /> },
+  { name: "My Task", link: "/my-task", icon: <BiTask /> },
+  { name: "Task Categories", link: "/task-categories", icon: <BsListTask /> },
+  { name: "Settings", link: "/settings", icon: <IoMdSettings /> },
+  { name: "Help", link: "/help", icon: <IoIosHelpCircleOutline /> },
 ];
 
 const SideNavbar = ({ isOpen, setIsOpen }) => {
@@ -44,14 +45,14 @@ const SideNavbar = ({ isOpen, setIsOpen }) => {
         <ul className="space-y-2">
           {navItems.map((item, idx) => (
             <li key={idx}>
-              <a
-                href="#"
+              <NavLink
+                to={item.link}
                 className={`flex items-center gap-3 p-3 rounded-lg transition font-medium ${item.active ? "bg-white text-[#FF6767]" : "hover:bg-white/20"
                   }`}
               >
                 <span className="text-xl">{item.icon}</span>
                 {item.name}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
