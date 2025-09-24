@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
 import { Suspense, lazy } from "react";
-import Login from "./components/authentication/Login";
-import Signup from "./components/authentication/Signup";
+
+const Login = lazy(() => import("./components/authentication/Login"));
+const Signup = lazy(() => import("./components/authentication/Signup"));
 const Dashboard = lazy(() => import("./components/pages/Dashboard"));
+const VitalTask = lazy(() => import("./components/pages/VitalTask"));
 
 const router = createBrowserRouter([
   {
@@ -22,24 +24,34 @@ const router = createBrowserRouter([
             <Dashboard />
           </Suspense>
         ),
+
       },
       {
-        path: "/login",
+        path: "/vital-task",
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
-            <Login />
+            <VitalTask />
           </Suspense>
-        ),
+        )
       },
-      {
-        path: "/signup",
-        element: (
-          <Suspense fallback={<h1>Loading..</h1>}>
-            <Signup />
-          </Suspense>
-        ),
-      },
+
     ],
+  },
+  {
+    path: "/login",
+    element: (
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Login />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/signup",
+    element: (
+      <Suspense fallback={<h1>Loading..</h1>}>
+        <Signup />
+      </Suspense>
+    ),
   },
 ]);
 
