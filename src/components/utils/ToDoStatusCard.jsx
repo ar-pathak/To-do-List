@@ -1,43 +1,22 @@
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
-const statusColors: Record<string, string> = {
+const statusColors = {
   "Not Started": "text-red-500",
   "In Progress": "text-yellow-500",
   "Completed": "text-green-500",
 };
 
-const priorityColors: Record<string, string> = {
+const priorityColors = {
   High: "text-red-500",
   Moderate: "text-blue-400",
   Low: "text-green-500",
 };
 
-const ToDoStatusCard = ({
-  title,
-  description,
-  priority,
-  status,
-  createdAt,
-  image
-}: {
-  title: string;
-  description: string;
-  priority: "High" | "Moderate" | "Low";
-  status: "Not Started" | "In Progress" | "Completed";
-  createdAt?: string;
-  image?: string;
-}) => {
+const ToDoStatusCard = ({ title, description, priority, status, createdAt, image }) => {
   return (
     <div className="flex justify-between border border-gray-300 p-4 rounded-lg mb-3 shadow-sm hover:shadow-md transition">
       {/* Status Dot */}
-      <div
-        className={`w-[12px] h-[12px] rounded-full inline-block mr-2 mt-2 ${status === "Completed"
-          ? "bg-green-500"
-          : status === "In Progress"
-            ? "bg-yellow-500"
-            : "bg-red-500"
-          }`}
-      ></div>
+      <div className={`w-3 h-3 rounded-full inline-block mr-2 mt-2 ${statusColors[status]}`} />
 
       {/* Content */}
       <div className="flex flex-col md:flex-row gap-5 w-full mx-2">
@@ -45,26 +24,20 @@ const ToDoStatusCard = ({
           <h2 className="text-lg md:text-xl font-medium">{title}</h2>
           <p className="text-gray-500 line-clamp-2">{description}</p>
 
-          {/* Priority & Status & Created at*/}
-          <div className="flex flex-wrap  mt-3  text-sm">
+          {/* Priority & Status & Created At */}
+          <div className="flex flex-wrap mt-3 text-sm">
             <div className="flex items-center mr-4">
               <h3 className="font-medium">Priority:</h3>
-              <span className={`ml-2 ${priorityColors[priority]}`}>
-                {priority}
-              </span>
+              <span className={`ml-2 ${priorityColors[priority]}`}>{priority}</span>
             </div>
             <div className="flex items-center">
               <h3 className="font-medium">Status:</h3>
-              <span className={`ml-2 ${statusColors[status]}`}>
-                {status}
-              </span>
+              <span className={`ml-2 ${statusColors[status]}`}>{status}</span>
             </div>
             {createdAt && (
               <div className="flex items-center ml-2">
-                <h3 className="font-medium">Status:</h3>
-                <span className="ml-2 text-gray-500">
-                  {createdAt}
-                </span>
+                <h3 className="font-medium">Created:</h3>
+                <span className="ml-2 text-gray-500">{createdAt}</span>
               </div>
             )}
           </div>
@@ -75,7 +48,7 @@ const ToDoStatusCard = ({
           <div className="h-full md:flex hidden items-center justify-center">
             <img
               src={image}
-              alt="task"
+              alt={`${title} thumbnail`}
               className="w-20 h-20 md:w-28 md:h-28 object-cover rounded-lg"
             />
           </div>
@@ -93,5 +66,7 @@ const ToDoStatusCard = ({
     </div>
   );
 };
+
+
 
 export default ToDoStatusCard;
