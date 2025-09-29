@@ -17,12 +17,14 @@ const ToDoStatusCard = ({
   description,
   priority,
   status,
+  createdAt,
   image
 }: {
   title: string;
   description: string;
   priority: "High" | "Moderate" | "Low";
   status: "Not Started" | "In Progress" | "Completed";
+  createdAt?: string;
   image?: string;
 }) => {
   return (
@@ -43,7 +45,7 @@ const ToDoStatusCard = ({
           <h2 className="text-lg md:text-xl font-medium">{title}</h2>
           <p className="text-gray-500 line-clamp-2">{description}</p>
 
-          {/* Priority & Status */}
+          {/* Priority & Status & Created at*/}
           <div className="flex flex-wrap  mt-3  text-sm">
             <div className="flex items-center mr-4">
               <h3 className="font-medium">Priority:</h3>
@@ -57,6 +59,14 @@ const ToDoStatusCard = ({
                 {status}
               </span>
             </div>
+            {createdAt && (
+              <div className="flex items-center ml-2">
+                <h3 className="font-medium">Status:</h3>
+                <span className="ml-2 text-gray-500">
+                  {createdAt}
+                </span>
+              </div>
+            )}
           </div>
         </div>
 

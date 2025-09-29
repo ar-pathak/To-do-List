@@ -69,6 +69,7 @@ const Dashboard = () => {
                 priority="Moderate"
                 status="Not Started"
                 image="./img/Rectangle 10.png"
+                createdAt="25th May, 2023"
               />
 
             </div>
