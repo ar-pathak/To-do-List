@@ -47,8 +47,10 @@ const SideNavbar = ({ isOpen, setIsOpen }) => {
             <li key={idx}>
               <NavLink
                 to={item.link}
-                className={`flex items-center gap-3 p-3 rounded-lg transition font-medium ${item.active ? "bg-white text-[#FF6767]" : "hover:bg-white/20"
-                  }`}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 p-3 rounded-lg transition font-medium ${isActive ? "bg-white text-[#FF6767]" : "hover:bg-white/20"
+                  }`
+                }
               >
                 <span className="text-xl">{item.icon}</span>
                 {item.name}
