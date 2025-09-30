@@ -3,7 +3,7 @@ import { FaEdit } from "react-icons/fa";
 
 const VitalCards = ({ title, description, priority, status, createdAt, image }) => {
     return (
-        <div className="px-10 border border-gray-300 rounded-lg mx-5">
+        <div className="px-5 py-10 border border-gray-300 rounded-lg mx-5">
             <div className="flex p-4">
                 {image && (
                     <div>

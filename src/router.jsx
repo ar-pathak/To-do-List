@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
 import { Suspense, lazy } from "react";
+import MyTask from "./components/pages/MyTask";
 
 const Login = lazy(() => import("./components/authentication/Login"));
 const Signup = lazy(() => import("./components/authentication/Signup"));
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <VitalTask />
+          </Suspense>
+        )
+      },
+      {
+        path: "/my-task",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <MyTask />
           </Suspense>
         )
       },

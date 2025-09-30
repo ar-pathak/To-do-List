@@ -15,7 +15,10 @@ const VitalTask = () => {
   return (
     <div className="flex">
       {/* Left Side (Task List) */}
-      <div>
+      <div className="border border-gray-300 p-5 rounded-lg">
+        <div className="mb-2 font-semibold">
+          <h4><span className="border-b-2 border-b-amber-500">Vital</span> Task</h4>
+        </div>
         {tasks.map((task) => (
           <div
             key={task.id}

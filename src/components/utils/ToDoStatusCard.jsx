@@ -30,12 +30,12 @@ const ToDoStatusCard = ({ title, description, priority, status, createdAt, image
               <h3 className="font-medium">Priority:</h3>
               <span className={`ml-2 ${priorityColors[priority]}`}>{priority}</span>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center mr-2">
               <h3 className="font-medium">Status:</h3>
               <span className={`ml-2 ${statusColors[status]}`}>{status}</span>
             </div>
             {createdAt && (
-              <div className="flex items-center ml-2">
+              <div className="flex items-center ">
                 <h3 className="font-medium">Created:</h3>
                 <span className="ml-2 text-gray-500">{createdAt}</span>
               </div>
