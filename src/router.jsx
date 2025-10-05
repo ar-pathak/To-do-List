@@ -8,6 +8,7 @@ const Signup = lazy(() => import("./components/authentication/Signup"));
 const Dashboard = lazy(() => import("./components/pages/Dashboard"));
 const VitalTask = lazy(() => import("./components/pages/VitalTask"));
 const TaskCategories = lazy(() => import("./components/pages/TaskCategories"));
+const Settings = lazy(() => import("./components/pages/Settings"));
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <TaskCategories />
+          </Suspense>
+        )
+      },
+      {
+        path: "/settings",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Settings />
           </Suspense>
         )
       },
