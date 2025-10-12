@@ -10,6 +10,7 @@ const VitalTask = lazy(() => import("./components/pages/VitalTask"));
 const TaskCategories = lazy(() => import("./components/pages/TaskCategories"));
 const Settings = lazy(() => import("./components/pages/Settings"));
 const Help = lazy(() => import("./components/pages/Help"));
+const AccountInfo = lazy(() => import("./components/pages/AccountInfo"));
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <Help />
+          </Suspense>
+        )
+      },
+      {
+        path: "/account-info",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <AccountInfo />
           </Suspense>
         )
       },

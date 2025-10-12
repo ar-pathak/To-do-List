@@ -30,11 +30,13 @@ const SideNavbar = ({ isOpen, setIsOpen }) => {
         ) : (
           ""
         )}
-        <img
-          src="./img/Ellipse 1.png"
-          alt="Profile"
-          className="w-20 h-20 rounded-full border-2 border-white shadow-md"
-        />
+        <NavLink to={"/account-info"} className="cursor-pointer">
+          <img
+            src="./img/Ellipse 1.png"
+            alt="Profile"
+            className="w-20 h-20 rounded-full border-2 border-white shadow-md"
+          />
+        </NavLink>
         <p className="mt-2 font-semibold">Sundar Gurung</p>
         <p className="text-sm text-gray-100">sundargurung360@gmail.com</p>
         <div className="w-full h-px bg-white/30 mt-4"></div>
