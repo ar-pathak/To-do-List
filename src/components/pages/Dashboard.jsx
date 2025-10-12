@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { IoPersonAdd } from "react-icons/io5";
 import { IoIosAdd } from "react-icons/io";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
@@ -5,6 +6,7 @@ import ToDoStatusCard from "../utils/ToDoStatusCard";
 import { VscStarFull } from "react-icons/vsc";
 import StatusChart from "../utils/StatusChart";
 import { MdOutlineTask, MdOutlineTaskAlt } from "react-icons/md";
+import InviteMemberPopup from "../Popups/InviteMemberPopup";
 
 const status = [
   { status: "Completed", percentage: 84 },
@@ -13,6 +15,11 @@ const status = [
 ]
 
 const Dashboard = () => {
+  const [showInvite, setShowInvite] = useState(false);
+
+  const handleInviteSend = (data) => {
+    console.log("Invite Sent:", data);
+  };
   return (
     <div className="sm:m-5 md:mx-10 ">
       <div className="flex flex-wrap justify-between items-center">
@@ -25,12 +32,17 @@ const Dashboard = () => {
             <img src="./img/SearchICon.png" alt="link" />
             <img src="./img/SearchICon.png" alt="link" />
           </div>
-          <button type="button" className=" flex items-center gap-2 bg-gray-100 p-2 rounded-lg hover:bg-gray-200 transition px-4 cursor-pointer border border-[#FF6767]">
+          <button type="button" onClick={() => setShowInvite(true)} className=" flex items-center gap-2 bg-gray-100 p-2 rounded-lg hover:bg-gray-200 transition px-4 cursor-pointer border border-[#FF6767]">
             <IoPersonAdd />
             <span>Invite</span>
           </button>
         </div>
       </div>
+      <InviteMemberPopup
+        isOpen={showInvite}
+        onClose={() => setShowInvite(false)}
+        onSendInvite={handleInviteSend}
+      />
       <div className="flex flex-wrap-reverse justify-between border border-gray-300 md:p-10 rounded-lg mt-5">
         <div className=" shadow-md rounded-lg sm:p-5 sm:mx-5">
           <div className="flex justify-between items-center mb-5 px-2 ">
