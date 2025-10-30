@@ -7,6 +7,8 @@ import { VscStarFull } from "react-icons/vsc";
 import StatusChart from "../utils/StatusChart";
 import { MdOutlineTask, MdOutlineTaskAlt } from "react-icons/md";
 import InviteMemberPopup from "../Popups/InviteMemberPopup";
+import AddTaskPopup from "../Popups/AddTaskPopup";
+
 
 const status = [
   { status: "Completed", percentage: 84 },
@@ -16,10 +18,17 @@ const status = [
 
 const Dashboard = () => {
   const [showInvite, setShowInvite] = useState(false);
+  const [showAddTask, setShowAddTask] = useState(false);
 
   const handleInviteSend = (data) => {
     console.log("Invite Sent:", data);
   };
+
+  const handleAddTask = (task) => {
+    console.log("New Task Added:", task);
+  };
+
+  
   return (
     <div className="sm:m-5 md:mx-10 ">
       <div className="flex flex-wrap justify-between items-center">
@@ -50,7 +59,7 @@ const Dashboard = () => {
               <HiOutlineDocumentAdd className="text-[#A1A3AB]" />
               <span>To-Do</span>
             </div>
-            <div className="flex items-center gap-2 text-[#FF6767] font-medium cursor-pointer hover:underline">
+            <div onClick={() => setShowAddTask(true)} className="flex items-center gap-2 text-[#FF6767] font-medium cursor-pointer hover:underline">
               <IoIosAdd />
               <span className="text-[#A1A3AB]">Add Task</span>
             </div>
@@ -87,6 +96,11 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        <AddTaskPopup
+          isOpen={showAddTask}
+          onClose={() => setShowAddTask(false)}
+          onAddTask={handleAddTask}
+        />
         <div className="shadow-md rounded-lg mb-5 sm:p-5 py-5 sm:mx-5">
           <div className="shadow-lg rounded-lg ">
             <div className="flex items-center mb-5 px-2"><MdOutlineTaskAlt className="text-[#FF6767]" /> <span className="text-[#A1A3AB] mx-2">Task Status</span></div>
