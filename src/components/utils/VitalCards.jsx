@@ -1,7 +1,16 @@
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { useState } from "react";
+import AddEditTaskPopup from "../Popups/AddEditTaskPopup";
 
 const VitalCards = ({ title, description, priority, status, createdAt, image }) => {
+    const [showPopup, setShowPopup] = useState(false);
+    const [editData, _setEditData] = useState({});
+
+    const handleEditTask = () => {
+        console.log("Edited Task");
+    };
+
     return (
         <div className="px-5 py-10 border border-gray-300 rounded-lg mx-5">
             <div className="flex p-4">
@@ -51,9 +60,16 @@ const VitalCards = ({ title, description, priority, status, createdAt, image }) 
                 <p className="text-gray-700 whitespace-pre-line">{description}</p>
                 <div className="flex items-center justify-end gap-3">
                     <MdDelete className="bg-red-500 text-white w-7 h-7 sm:w-8 sm:h-8 p-1.5 rounded-md cursor-pointer hover:bg-red-600" />
-                    <FaEdit className="bg-blue-500 text-white w-7 h-7 sm:w-8 sm:h-8 p-1.5 rounded-md cursor-pointer hover:bg-blue-600" />
+                    <FaEdit onClick={() => setShowPopup(true)} className="bg-blue-500 text-white w-7 h-7 sm:w-8 sm:h-8 p-1.5 rounded-md cursor-pointer hover:bg-blue-600" />
                 </div>
             </div>
+            <AddEditTaskPopup
+                isOpen={showPopup}
+                onClose={() => setShowPopup(false)}
+                mode="edit"
+                initialData={editData}
+                onSubmit={handleEditTask}
+            />
         </div>
     );
 };
