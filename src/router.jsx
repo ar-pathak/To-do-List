@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
 import { Suspense, lazy } from "react";
-import MyTask from "./components/pages/MyTask";
+import Loader from "./components/utils/Loader";
+import ErrorPage from "./components/utils/ErrorPage";
 
 const Login = lazy(() => import("./components/authentication/Login"));
 const Signup = lazy(() => import("./components/authentication/Signup"));
@@ -11,21 +12,22 @@ const TaskCategories = lazy(() => import("./components/pages/TaskCategories"));
 const Settings = lazy(() => import("./components/pages/Settings"));
 const Help = lazy(() => import("./components/pages/Help"));
 const AccountInfo = lazy(() => import("./components/pages/AccountInfo"));
+const MyTask = lazy(() => import("./components/pages/MyTask"));
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<Loader />}>
         <App />
       </Suspense>
     ),
-    errorElement: <h1>Page Not Found</h1>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<Loader />}>
             <Dashboard />
           </Suspense>
         ),
@@ -34,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: "/vital-task",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<Loader />}>
             <VitalTask />
           </Suspense>
         )
@@ -42,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/my-task",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<Loader />}>
             <MyTask />
           </Suspense>
         )
@@ -50,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: "/task-categories",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<Loader />}>
             <TaskCategories />
           </Suspense>
         )
@@ -58,7 +60,7 @@ const router = createBrowserRouter([
       {
         path: "/settings",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<Loader />}>
             <Settings />
           </Suspense>
         )
@@ -66,7 +68,7 @@ const router = createBrowserRouter([
       {
         path: "/help",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<Loader />}>
             <Help />
           </Suspense>
         )
@@ -74,7 +76,7 @@ const router = createBrowserRouter([
       {
         path: "/account-info",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<Loader />}>
             <AccountInfo />
           </Suspense>
         )
@@ -84,7 +86,7 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: (
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<Loader />}>
         <Login />
       </Suspense>
     ),
@@ -92,7 +94,7 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: (
-      <Suspense fallback={<h1>Loading..</h1>}>
+      <Suspense fallback={<Loader />}>
         <Signup />
       </Suspense>
     ),
