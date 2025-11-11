@@ -7,11 +7,13 @@ const MyTask = () => {
 
     const [isClicked, setIsClicked] = useState<number | null>(null);
     const [cardDetails, setCardDetails] = useState(tasks[0]);
+   
 
     const handleTaskClick = (taskId: number, task: typeof tasks[0]) => {
         setIsClicked(isClicked === taskId ? null : taskId);
         setCardDetails(task);
     };
+
     return (
         <div className="flex">
 
