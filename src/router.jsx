@@ -4,11 +4,11 @@ import { Suspense, lazy } from "react";
 import Loader from "./components/utils/Loader";
 import ErrorPage from "./components/utils/ErrorPage";
 
-const Login = lazy(() => import("./components/authentication/Login"));
-const Signup = lazy(() => import("./components/authentication/Signup"));
+const Login = lazy(() => import("./features/auth/LoginPage"));
+const Signup = lazy(() => import("./features/auth/SignupPage"));
 const Dashboard = lazy(() => import("./components/pages/Dashboard"));
 const VitalTask = lazy(() => import("./components/pages/VitalTask"));
-const TaskCategories = lazy(() => import("./components/pages/TaskCategories"));
+const TaskCategories = lazy(() => import("./components/pages/TaskCategories/TaskCategories"));
 const Settings = lazy(() => import("./components/pages/Settings"));
 const Help = lazy(() => import("./components/pages/Help"));
 const AccountInfo = lazy(() => import("./components/pages/AccountInfo"));
