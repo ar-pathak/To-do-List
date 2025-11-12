@@ -10,6 +10,7 @@ const Dashboard = lazy(() => import("./features/dashboard/DashboardPage"));
 const MyTask = lazy(() => import("./features/tasks/pages/MyTasksPage"));
 const VitalTask = lazy(() => import("./features/tasks/pages/VitalTasksPage"));
 const Projects = lazy(() => import("./features/projects/pages/Projects"));
+const Teams = lazy(() => import("./features/teams/pages/Teams"));
 const TaskCategories = lazy(() => import("./components/pages/TaskCategories/TaskCategories"));
 const Settings = lazy(() => import("./components/pages/Settings"));
 const Help = lazy(() => import("./components/pages/Help"));
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader />}>
             <Projects />
+          </Suspense>
+        )
+      },
+      {
+        path: "/teams",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Teams />
           </Suspense>
         )
       },
