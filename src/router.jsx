@@ -6,13 +6,13 @@ import ErrorPage from "./components/utils/ErrorPage";
 
 const Login = lazy(() => import("./features/auth/LoginPage"));
 const Signup = lazy(() => import("./features/auth/SignupPage"));
-const Dashboard = lazy(() => import("./components/pages/Dashboard"));
-const VitalTask = lazy(() => import("./components/pages/VitalTask"));
+const Dashboard = lazy(() => import("./features/dashboard/DashboardPage"));
+const MyTask = lazy(() => import("./features/tasks/page/MyTasksPage"));
+const VitalTask = lazy(() => import("./features/tasks/page/VitalTasksPage"));
 const TaskCategories = lazy(() => import("./components/pages/TaskCategories/TaskCategories"));
 const Settings = lazy(() => import("./components/pages/Settings"));
 const Help = lazy(() => import("./components/pages/Help"));
 const AccountInfo = lazy(() => import("./components/pages/AccountInfo"));
-const MyTask = lazy(() => import("./components/pages/MyTask"));
 
 const router = createBrowserRouter([
   {
