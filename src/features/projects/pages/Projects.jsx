@@ -3,6 +3,7 @@ import { projects } from "../data/projectsData";
 import ProjectFilterBar from "../components/ProjectFilterBar";
 import ProjectGrid from "../components/ProjectGrid";
 import ProjectDetail from "../components/ProjectDetail";
+import AddEditProjectPopup from "../../../common/AddEditProjectPopup";
 
 const Projects = () => {
     const [selected, setSelected] = useState(null);
@@ -11,6 +12,7 @@ const Projects = () => {
         status: "",
         sort: "recent",
     });
+    const [show, setShow] = useState(false);
 
     const filtered = useMemo(() => {
         let res = [...projects];
@@ -25,6 +27,10 @@ const Projects = () => {
         return res;
     }, [filters]);
 
+    const handleAdd = (data) => {
+        console.log("New project added:", data);
+    };
+
     return (
         <div className="p-3 sm:p-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -34,7 +40,7 @@ const Projects = () => {
                         ({filtered.length})
                     </span>
                 </h1>
-                <button className="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#FF6767] to-[#FF8C68] text-white hover:shadow-md transition-all">
+                <button onClick={() => setShow(true)} className="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#FF6767] to-[#FF8C68] text-white hover:shadow-md transition-all">
                     + New Project
                 </button>
             </div>
@@ -45,6 +51,13 @@ const Projects = () => {
             {selected && (
                 <ProjectDetail project={selected} onClose={() => setSelected(null)} />
             )}
+
+            <AddEditProjectPopup
+                isOpen={show}
+                onClose={() => setShow(false)}
+                mode="add"
+                onSubmit={handleAdd}
+            />
         </div>
     );
 };
