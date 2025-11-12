@@ -7,8 +7,9 @@ import ErrorPage from "./components/utils/ErrorPage";
 const Login = lazy(() => import("./features/auth/LoginPage"));
 const Signup = lazy(() => import("./features/auth/SignupPage"));
 const Dashboard = lazy(() => import("./features/dashboard/DashboardPage"));
-const MyTask = lazy(() => import("./features/tasks/page/MyTasksPage"));
-const VitalTask = lazy(() => import("./features/tasks/page/VitalTasksPage"));
+const MyTask = lazy(() => import("./features/tasks/pages/MyTasksPage"));
+const VitalTask = lazy(() => import("./features/tasks/pages/VitalTasksPage"));
+const Projects = lazy(() => import("./features/projects/pages/Projects"));
 const TaskCategories = lazy(() => import("./components/pages/TaskCategories/TaskCategories"));
 const Settings = lazy(() => import("./components/pages/Settings"));
 const Help = lazy(() => import("./components/pages/Help"));
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader />}>
             <MyTask />
+          </Suspense>
+        )
+      },
+      {
+        path: "/projects",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Projects />
           </Suspense>
         )
       },
