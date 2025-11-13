@@ -1,8 +1,7 @@
-import { motion } from "framer-motion";
-import { FaRegClock } from "react-icons/fa";
-import { MdPeople } from "react-icons/md";
+// features/projects/components/ProjectCard.jsx
+import React from "react";
 
-const statusColors = {
+const statusColor = {
   "In Progress": "text-yellow-500",
   Completed: "text-green-500",
   "Not Started": "text-red-500",
@@ -10,47 +9,43 @@ const statusColors = {
 
 const ProjectCard = ({ project, onSelect }) => {
   return (
-    <motion.div
-      whileHover={{ scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 200 }}
+    <div
       onClick={() => onSelect(project)}
-      className="bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-2xl p-4 sm:p-6 transition cursor-pointer flex flex-col justify-between"
+      className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-lg transition cursor-pointer flex flex-col justify-between h-full"
     >
       <div>
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-lg sm:text-xl font-semibold text-gray-800">
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="text-sm sm:text-lg font-semibold text-gray-800">
             {project.title}
           </h3>
-          <span
-            className={`text-xs sm:text-sm font-medium ${statusColors[project.status]
-              }`}
-          >
+          <span className={`text-xs sm:text-sm font-medium ${statusColor[project.status] || "text-gray-500"}`}>
             {project.status}
           </span>
         </div>
-        <p className="text-gray-500 text-sm line-clamp-2 mb-3">
+
+        <p className="text-xs sm:text-sm text-gray-500 line-clamp-3 mb-3">
           {project.description}
         </p>
 
-        {/* Progress Bar */}
-        <div className="w-full bg-gray-200 rounded-full h-2.5 mb-3">
-          <div
-            className="bg-gradient-to-r from-[#FF6767] to-[#FF8C68] h-2.5 rounded-full transition-all"
-            style={{ width: `${project.progress}%` }}
-          />
-        </div>
-
-        {/* Info Row */}
-        <div className="flex justify-between text-xs sm:text-sm text-gray-500">
-          <div className="flex items-center gap-2">
-            <FaRegClock /> {project.dueDate}
-          </div>
-          <div className="flex items-center gap-2">
-            <MdPeople /> {project.members.length} Members
-          </div>
+        <div className="flex items-center gap-3 text-xs text-gray-500">
+          <span className="flex items-center gap-1">
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.5" d="M8 7V3m8 4V3M3 11h18M5 21h14"></path></svg>
+            {project.dueDate}
+          </span>
+          <span className="flex items-center gap-1">
+            <svg className="w-3 h-3" fill="currentColor"><circle cx="6" cy="12" r="1.5"></circle></svg>
+            {project.members.length} members
+          </span>
         </div>
       </div>
-    </motion.div>
+
+      <div className="mt-4">
+        <div className="w-full bg-gray-100 rounded-full h-2.5">
+          <div className="h-2.5 rounded-full bg-gradient-to-r from-[#FF6767] to-[#FF8C68]" style={{ width: `${project.progress}%` }} />
+        </div>
+        <div className="text-xs text-gray-400 mt-2">{project.progress}% complete</div>
+      </div>
+    </div>
   );
 };
 

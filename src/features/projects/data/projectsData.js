@@ -1,6 +1,6 @@
-export const projects = [
+export const projectsData = [
     {
-        id: 1,
+        id: "p1",
         title: "AgriCart E-Commerce",
         description: "Full-stack e-commerce for agriculture products.",
         createdAt: "2025-11-01",
@@ -11,7 +11,7 @@ export const projects = [
         image: "/img/project1.jpg",
     },
     {
-        id: 2,
+        id: "p2",
         title: "AI Movie Recommender",
         description: "Personalized movie recommendation system using ML.",
         createdAt: "2025-10-10",
@@ -20,5 +20,16 @@ export const projects = [
         progress: 100,
         members: ["Arsan"],
         image: "/img/project2.jpg",
+    },
+    {
+        id: "p3",
+        title: "UI Library",
+        description: "Shared design system & component library.",
+        createdAt: "2025-09-05",
+        dueDate: "2025-11-30",
+        status: "Not Started",
+        progress: 5,
+        members: ["Sundar", "Rahul"],
+        image: "/img/project3.jpg",
     },
 ];
