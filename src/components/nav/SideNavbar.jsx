@@ -1,6 +1,6 @@
 import { BiTask } from "react-icons/bi";
 import { MdDashboard, MdLogout } from "react-icons/md";
-import { BsExclamationLg, BsListTask } from "react-icons/bs";
+import { BsExclamationLg } from "react-icons/bs";
 import { IoMdSettings, IoIosHelpCircleOutline } from "react-icons/io";
 import { SiVexxhost } from "react-icons/si";
 import { NavLink } from "react-router";
@@ -9,7 +9,6 @@ const navItems = [
   { name: "Dashboard", link: "/", icon: <MdDashboard />, active: true },
   { name: "Vital Task", link: "/vital-task", icon: <BsExclamationLg /> },
   { name: "My Task", link: "/my-task", icon: <BiTask /> },
-  { name: "Task Categories", link: "/task-categories", icon: <BsListTask /> },
   { name: "Settings", link: "/settings", icon: <IoMdSettings /> },
   { name: "Help", link: "/help", icon: <IoIosHelpCircleOutline /> },
 ];
