@@ -1,110 +1,84 @@
 import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
 import { FaCalendarAlt } from "react-icons/fa";
 import Search from "../utils/Search";
-import { useEffect, useState } from "react";
 import SideNavbar from "./SideNavbar";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [show, setShow] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastY, setLastY] = useState(0);
+  const [mobileSearch, setMobileSearch] = useState(false);
 
+  // Sticky Hide/Show Navbar
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        // Scroll Down → hide
-        setShow(false);
-      } else {
-        // Scroll Up → show
-        setShow(true);
-      }
-      setLastScrollY(window.scrollY);
+      setShowNavbar(window.scrollY < lastY);
+      setLastY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
-
+  }, [lastY]);
 
   return (
-    <div
-      className={`flex flex-col ${isOpen ? "p-0" : "p-4"
-        } bg-white shadow-lg rounded-2xl border border-gray-200 max-w-7xl mx-auto w-full transition-all duration-300 fixed top-0 left-0 right-0 z-50 bg-white shadow transition-transform duration-300 ${show ? "translate-y-0" : "-translate-y-full"
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
     >
-      {/* Top Bar */}
-      <div className="flex justify-between items-center w-full">
-        {/* Logo / Title */}
-        <h1 className="sm:text-4xl text-2xl font-bold tracking-tight">
-          <span className="text-[#FF6767]">Dash</span>board
-        </h1>
+      <nav className="bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-7xl mx-auto p-4 flex items-center justify-between gap-4">
+          {/* Brand */}
+          <h1 className="text-3xl font-bold">
+            <span className="text-[#FF6767]">Dash</span>board
+          </h1>
 
-        {/* Desktop Search */}
-        <div className="w-1/3 hidden lg:block fade-in">
-          {!isSearchOpen && <Search />}
-        </div>
-
-        {/* Icons + Date + Avatar */}
-        <div className="flex items-center sm:gap-5 gap-2">
-          {/* Mobile Search Icon */}
-          <IoIosSearch
-            role="button"
-            aria-label="Search"
-            className={`bg-[#FF6767] lg:hidden ${isSearchOpen ? "hidden" : ""
-              } text-white w-7 h-7 sm:w-8 sm:h-8 p-1.5 rounded-md transition transform hover:scale-110 hover:bg-[#ff4c4c] cursor-pointer`}
-            onClick={() => setIsSearchOpen(!isSearchOpen)}
-          />
-
-          {/* Notification */}
-          <IoMdNotificationsOutline
-            role="button"
-            aria-label="Notifications"
-            className="bg-[#FF6767] text-white w-7 h-7 sm:w-8 sm:h-8 p-1.5 rounded-md transition transform hover:scale-110 hover:bg-[#ff4c4c] cursor-pointer"
-          />
-
-          {/* Calendar */}
-          <FaCalendarAlt
-            role="button"
-            aria-label="Calendar"
-            className="bg-[#FF6767] text-white w-7 h-7 sm:w-8 sm:h-8 p-1.5 rounded-md transition transform hover:scale-110 hover:bg-[#ff4c4c] cursor-pointer"
-          />
-
-          {/* Date */}
-          <div className="hidden md:flex flex-col items-center px-3 py-1 bg-gray-50 rounded-md shadow-sm">
-            <p className="text-sm font-medium">Tuesday</p>
-            <p className="text-[#3ABEFF] text-xs">24/08/2021</p>
+          {/* Desktop Search */}
+          <div className="hidden lg:block w-1/3">
+            <Search />
           </div>
 
-          {/* hamburger */}
-          <div
-            className="hamburger mx-1 md:hidden  font-bold text-xl cursor-pointer select-none"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            ☰
+          {/* Actions */}
+          <div className="flex items-center gap-3">
+            {/* Mobile Search */}
+            <IoIosSearch
+              className="lg:hidden bg-[#FF6767] text-white w-8 h-8 p-1.5 rounded-md cursor-pointer hover:bg-[#ff4c4c]"
+              onClick={() => setMobileSearch(!mobileSearch)}
+            />
+
+            {/* Notifications */}
+            <IoMdNotificationsOutline className="bg-[#FF6767] text-white w-8 h-8 p-1.5 rounded-md cursor-pointer hover:bg-[#ff4c4c]" />
+
+            {/* Calendar */}
+            <FaCalendarAlt className="bg-[#FF6767] text-white w-8 h-8 p-1.5 rounded-md cursor-pointer hover:bg-[#ff4c4c]" />
+
+            {/* Desktop Date */}
+            <div className="hidden md:block bg-gray-50 px-3 py-1 rounded-md shadow-sm text-center">
+              <p className="text-sm font-medium">Tuesday</p>
+              <p className="text-xs text-[#3ABEFF]">24/08/2021</p>
+            </div>
+
+            {/* Hamburger */}
+            <button
+              className="md:hidden ml-2 text-3xl font-bold"
+              onClick={() => setIsMenuOpen(true)}
+            >
+              ☰
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Search (Animated) */}
-      <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${isSearchOpen
-          ? "max-h-40 opacity-100 mt-3"
-          : "max-h-0 opacity-0 overflow-hidden"
-          }`}
-      >
-        <Search />
-      </div>
-      {/* hamburger nav menu */}
-      <div
-        className={`transition-all duration-500 ease-in-out md:hidden absolute z-50 w-full 
-    ${isOpen ? "max-h-screen opacity-100 flex" : "max-h-0 opacity-0"} 
-  `}
-      >
-        <SideNavbar isOpen={isOpen} setIsOpen={setIsOpen} />
-      </div>
-    </div>
+        {/* Mobile Search */}
+        {mobileSearch && (
+          <div className="lg:hidden px-4 pb-3">
+            <Search />
+          </div>
+        )}
+      </nav>
+
+      {/* Mobile Side Menu */}
+      <SideNavbar isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
+    </header>
   );
 };
 
