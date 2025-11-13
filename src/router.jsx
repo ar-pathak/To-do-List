@@ -12,7 +12,7 @@ const VitalTask = lazy(() => import("./features/tasks/pages/VitalTasksPage"));
 const Projects = lazy(() => import(".//features/projects/pages/ProjectsPage"));
 const Teams = lazy(() => import("./features/teams/pages/Teams"));
 const Settings = lazy(() => import("./features/settings/SettingsPage"));
-const Help = lazy(() => import("./components/pages/Help"));
+const Help = lazy(() => import("./features/help/HelpPage"));
 const AccountInfo = lazy(() => import("./components/pages/AccountInfo"));
 
 const router = createBrowserRouter([
