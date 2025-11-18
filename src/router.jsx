@@ -14,6 +14,7 @@ const Teams = lazy(() => import("./features/teams/pages/Teams"));
 const Settings = lazy(() => import("./features/settings/SettingsPage"));
 const Help = lazy(() => import("./features/help/HelpPage"));
 const AccountInfo = lazy(() => import("./features/account/AccountPage"));
+const NotificationsPage = lazy(() => import("./features/notification/NotificationsPage"))
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader />}>
             <AccountInfo />
+          </Suspense>
+        )
+      },
+      {
+        path: "/notifications",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <NotificationsPage />
           </Suspense>
         )
       },
