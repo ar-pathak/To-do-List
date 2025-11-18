@@ -1,6 +1,6 @@
 import { BiTask } from "react-icons/bi";
 import { MdDashboard, MdLogout } from "react-icons/md";
-import { BsExclamationLg } from "react-icons/bs";
+import { BsExclamationLg, BsListTask } from "react-icons/bs";
 import { IoMdSettings, IoIosHelpCircleOutline } from "react-icons/io";
 import { SiVexxhost } from "react-icons/si";
 import { NavLink } from "react-router";

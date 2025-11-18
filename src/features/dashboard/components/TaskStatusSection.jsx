@@ -1,5 +1,5 @@
 import { MdOutlineTaskAlt } from "react-icons/md";
-import StatusChart from "../../../components/utils/StatusChart";
+import StatusChart from "./StatusChart";
 
 const TaskStatusSection = ({ statusData }) => (
   <div className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition p-5">

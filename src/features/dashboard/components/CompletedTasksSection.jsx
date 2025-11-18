@@ -1,5 +1,5 @@
 import { MdOutlineTask } from "react-icons/md";
-import ToDoStatusCard from "../../../components/utils/ToDoStatusCard";
+import ToDoStatusCard from "./ToDoStatusCard";
 
 const CompletedTasksSection = () => (
   <div className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition p-5">

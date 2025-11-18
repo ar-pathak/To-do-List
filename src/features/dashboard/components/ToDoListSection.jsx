@@ -1,7 +1,7 @@
 import { IoIosAdd } from "react-icons/io";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
 import { VscStarFull } from "react-icons/vsc";
-import ToDoStatusCard from "../../../components/utils/ToDoStatusCard";
+import ToDoStatusCard from "./ToDoStatusCard";
 
 const ToDoListSection = ({ tasks, onAddTask }) => (
     <div className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition p-5">
