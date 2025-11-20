@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
 import { Suspense, lazy } from "react";
-import Loader from "./common/Loader";
-import ErrorPage from "./common/ErrorPage";
+import Loader from "./common/components/Loader";
+import ErrorPage from "./common/components/ErrorPage";
 
 const Login = lazy(() => import("./features/auth/LoginPage"));
 const Signup = lazy(() => import("./features/auth/SignupPage"));
