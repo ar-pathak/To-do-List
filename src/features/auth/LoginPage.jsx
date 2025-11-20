@@ -5,16 +5,19 @@ import AuthLayout from "./components/AuthLayout";
 import AuthInput from "./components/AuthInput";
 import SocialLogin from "./components/SocialLogin";
 import { Link } from "react-router";
+import useHandleLoginSubmit from "./hook/useHandleLoginSubmit";
+import Loader from "./components/Loader";
 
 const LoginPage = () => {
     const [formData, setFormData] = useState({ username: "", password: "" });
+    const { submitLogin, loading } = useHandleLoginSubmit();
 
     const handleChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Login Attempt:", formData);
+        submitLogin(formData);
     };
 
     return (
@@ -27,7 +30,8 @@ const LoginPage = () => {
                 <AuthInput
                     icon={FaUser}
                     name="username"
-                    placeholder="Enter your username"
+                    type="email"
+                    placeholder="Enter your email"
                     value={formData.username}
                     onChange={handleChange}
                 />
@@ -54,7 +58,11 @@ const LoginPage = () => {
                     type="submit"
                     className="w-full bg-[#FF6767] text-white py-3 rounded-xl font-medium hover:bg-[#ff5656] transition mt-4"
                 >
-                    Sign In
+                    {loading ? (
+                        Loader({ msg: 'Signing In...' })
+                    ) : (
+                        'Sign In'
+                    )}
                 </button>
 
                 <div className="text-center text-gray-600 text-sm mt-4">
@@ -64,7 +72,6 @@ const LoginPage = () => {
                     </Link>
                 </div>
             </form>
-
             <SocialLogin />
         </AuthLayout>
     );
