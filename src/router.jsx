@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react";
 import Loader from "./common/components/Loader";
 import ErrorPage from "./common/components/ErrorPage";
 
+const HomePage = lazy(() => import("./features/home/pages/HomePage"))
 const Login = lazy(() => import("./features/auth/LoginPage"));
 const Signup = lazy(() => import("./features/auth/SignupPage"));
 const Dashboard = lazy(() => import("./features/dashboard/DashboardPage"));
@@ -116,6 +117,15 @@ const router = createBrowserRouter([
         <Signup />
       </Suspense>
     ),
+  },
+  {
+    path: "/home",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <HomePage />
+      </Suspense>
+    ),
+
   },
 ]);
 

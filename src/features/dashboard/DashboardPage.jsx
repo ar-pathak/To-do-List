@@ -4,8 +4,8 @@ import TaskStatsCard from "./components/TaskStatsCard";
 import ToDoListSection from "./components/ToDoListSection";
 import TaskStatusSection from "./components/TaskStatusSection";
 import CompletedTasksSection from "./components/CompletedTasksSection";
-import AddEditTaskPopup from "../../common/AddEditTaskPopup";
-import InviteMemberPopup from "../../common/InviteMemberPopup";
+import AddEditTaskPopup from "../../common/components/AddEditTaskPopup";
+import InviteMemberPopup from "../../common/components/InviteMemberPopup";
 import { mockTasks, statusData } from "./data/mockData";
 
 const DashboardPage = () => {
