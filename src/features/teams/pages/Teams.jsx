@@ -3,7 +3,7 @@ import { teams as initialTeams } from "../data/teamsData";
 import TeamFilterBar from "../components/TeamFilterBar";
 import TeamGrid from "../components/TeamGrid";
 import TeamDetail from "../components/TeamDetail";
-import AddEditTeamPopup from "../../../common/AddEditTeamPopup";
+import AddEditTeamPopup from "../../../common/components/AddEditTeamPopup";
 
 const Teams = () => {
     const [teams, setTeams] = useState(initialTeams);
